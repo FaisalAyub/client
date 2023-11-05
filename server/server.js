@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const app = express();
 const fs = require('fs');
+const cors = require('cors');
 
 const upload = multer({ dest: 'uploads/' });
 // Enable All CORS Requests
@@ -23,7 +24,6 @@ app.get('/api/read-json', (req, res) => {
         try {
           const jsonData = JSON.parse(data);
                 // Modify the JSON data as needed
-      jsonData[0].name = 'Faisal Ayub';
 
       // Write the updated data back to the file
       fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), 'utf8', (writeErr) => {
